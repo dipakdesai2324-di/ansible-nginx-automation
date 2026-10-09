@@ -1,6 +1,5 @@
 # ansible-nginx-automation
 Automate Nginx installation and Linux web server configuration using Ansible playbooks, inventory, and SSH.
-# Ansible Nginx Automation
 
 ## Project Overview
 This project demonstrates how to automate Nginx installation and web-server configuration on Ubuntu Linux servers using Ansible.
