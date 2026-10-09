@@ -1,1 +1,34 @@
+- name: Configure web servers and deploy Nginx
+  hosts: webservers
+  become: true
 
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Deploy custom index page
+      ansible.builtin.copy:
+        src: ../files/index.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Verify Nginx responds locally
+      ansible.builtin.uri:
+        url: http://127.0.0.1
+        status_code: 200
+      register: nginx_response
+
+    - name: Display verification result
+      ansible.builtin.debug:
+        msg: "Nginx is responding successfully on {{ inventory_hostname }}"
