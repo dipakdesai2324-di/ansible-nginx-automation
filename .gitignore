@@ -1,1 +1,17 @@
+# Ansible temporary files
+*.retry
 
+# SSH private keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Environment and editor files
+.env
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
